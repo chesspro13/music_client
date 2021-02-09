@@ -1,4 +1,4 @@
-import i2c_lib
+import sweetpi_I2C_scripts.i2c_lib
 from time import sleep
 
 # LCD Address
@@ -7,6 +7,8 @@ ADDRESS = 0x27
 
 # I2C bus
 BUS = 1
+
+#akins X4491
 
 # commands
 LCD_CLEARDISPLAY = 0x01

@@ -10,7 +10,7 @@ class main:
     def cycle(self):
 
         # Sets the play time onto the lcd screen
-        self.pins.setOutput(self.music.getCurPlayTime())
+        self.pins.setOutput(self.music.getCurPlayTime(), 1)
 
         # Check to see if there is a file named "Play"
         if self.fc.checkPlay():
@@ -43,7 +43,8 @@ class main:
         # GPIO class only works Raspberry pi.
         # If this is not being ran on a pi, use a dummy module.
         if onPi:
-            self.pins = GPIO.gpio()
+            self.pins = GPIO.GPIO()
+            self.pins.init()
             self.fc.init("/home/pi")
         else:
             self.pins = Dummy.Dummy()
@@ -66,4 +67,4 @@ class main:
 # Start Program
 p = main()
 # Boolean is used to determine if the script is being running on raspberry pi or now.
-p.init(False)
+p.init(True)

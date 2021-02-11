@@ -1,6 +1,5 @@
 from sweetpi_I2C_scripts.lcddriver import lcd
-if False:
-    import Rpi.GPIO as gpio
+import RPi.GPIO as gpio
 import Music as music
 import time
 

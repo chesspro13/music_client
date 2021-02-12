@@ -31,6 +31,7 @@ class FileChecker:
     def checkGetTime(self):
         if os.path.isfile(self.path + "/commands/getTime"):
             os.system("sudo rm " + self.path + "/commands/getTime");
+            self.setCurPlayTime(self.music.getCurPlayTime())
             return True
         return False
 
@@ -40,9 +41,10 @@ class FileChecker:
         f.close()
 
     def setTotalPlayTime(self, totalPlayTime):
-        f = open(self.path + "commands/audioLength", "w")
+        f = open(self.path + "/commands/audioLength", "w")
         s = f.write(str(totalPlayTime))
         f.close()
 
-    def init(self, path):
+    def init(self, path, music):
         self.path = path
+        self.music = music

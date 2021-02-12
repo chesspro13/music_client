@@ -46,7 +46,7 @@ class Music:
     def init(self):
         self.fc = FileChecker.FileChecker()
 
-        self.musicPlayer = vlc.MediaPlayer("/home/chesspro13/low.mp3")
+        self.musicPlayer = vlc.MediaPlayer("/home/pi/songs/low.mp3")
         self.songName = "Yay!"
         self.playing = False
 

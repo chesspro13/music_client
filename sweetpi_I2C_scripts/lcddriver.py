@@ -1,4 +1,5 @@
-import sweetpi_I2C_scripts.i2c_lib
+#import i2c_lib
+from sweetpi_I2C_scripts.i2c_lib import i2c_device 
 from time import sleep
 
 # LCD Address
@@ -63,7 +64,8 @@ class lcd:
 
   def __init__(self):
     """Setup the display, turn on backlight and text display + ...?"""
-    self.device = i2c_lib.i2c_device(ADDRESS, BUS)
+    #self.device = i2c_lib.i2c_device(ADDRESS, BUS)
+    self.device = i2c_device(ADDRESS, BUS)
 
     self.write(0x03)
     self.write(0x03)

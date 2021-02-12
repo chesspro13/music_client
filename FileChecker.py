@@ -6,7 +6,7 @@ class FileChecker:
 
     def checkPlay(self):
         if os.path.isfile(self.path + "/commands/play"):
-            os.system("sudo rm " + self.path + "commands/play")
+            os.system("sudo rm " + self.path + "/commands/play")
             return True
         return False
 
@@ -23,7 +23,7 @@ class FileChecker:
         return False
 
     def checkVolumeDown(self):
-        if os.path.isfile(self.path + "commands/volumeDown"):
+        if os.path.isfile(self.path + "/commands/volumeDown"):
             os.system("sudo rm " + self.path + "/commands/volumeDown")
             return True
         return False

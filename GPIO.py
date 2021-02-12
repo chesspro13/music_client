@@ -65,9 +65,10 @@ class GPIO:
 
         self.butt = gpio.input(10)
         self.lcdOutput = lcd()
-        self.musicController = music()
+        self.musicController = music.Music()
+        self.musicController.init()
 
-        self.inxex = [0,0]
+        self.index = [0,0]
         #TODO: Make the setOutput function check to see if it really needs to print out characters to the screen
         self.lastOutput = ["", ""]
 

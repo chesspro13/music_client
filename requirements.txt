@@ -1,5 +1,7 @@
-bs4
-requests
+smbus
 python-vlc
+bs4
+youtube_dl
+requests
+pafy
 RPi.gpio
-

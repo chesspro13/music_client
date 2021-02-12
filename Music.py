@@ -14,12 +14,19 @@ class Music:
     def volumeUp(self):
         if self.volume < 100:
             self.volume += 10
-            call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
+
+            # Amixer is not a viable option for running in a container since I cannot access the host system!
+            # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...
+            # call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
+
 
     def volumeDown(self):
         if self.volume > 0:
             self.volume -= 10
-            call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
+            
+            # Amixer is not a viable option for running in a container since I cannot access the host system!
+            # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...
+            # call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
 
     def toggle(self):
 
@@ -46,11 +53,17 @@ class Music:
     def init(self):
         self.fc = FileChecker.FileChecker()
 
+        # This one is for computers
         self.musicPlayer = vlc.MediaPlayer("/home/pi/songs/low.mp3")
+        # This one is for containers
+        # self.musicPlayer = vlc.MediaPlayer("/songs/low.mp3")
         self.songName = "Yay!"
         self.playing = False
 
         self.volume = 100
 
         self.musicPlayer.play()
-        call(["amixer", "-D", "pulse", "set", "Master", str(self.volume)+"%"])
+
+        # Amixer is not a viable option for running in a container since I cannot access the host system
+        # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...
+        # call(["amixer", "-D", "pulse", "set", "Master", str(self.volume)+"%"])

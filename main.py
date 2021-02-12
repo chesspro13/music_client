@@ -10,7 +10,8 @@ class main:
     def cycle(self):
 
         # Sets the play time onto the lcd screen
-        self.pins.setOutput(self.music.getCurPlayTime(), 1)
+        if self.hasGpio:
+            self.pins.setOutput(self.music.getCurPlayTime(), 1)
 
         # Check to see if there is a file named "Play"
         if self.fc.checkPlay():
@@ -28,6 +29,9 @@ class main:
         if self.fc.checkVolumeDown():
             self.music.volumeDown()
 
+        if self.fc.checkGetTime():
+            self.fc.setTotalPlayTime()
+
     # I think this is for updating the LCD screen?
     def timeLoop(self):
         t = time.time()
@@ -38,13 +42,15 @@ class main:
 
     #
     def init(self, onPi):
+        self.hasGpio = False
         self.fc = FileChecker.FileChecker()
 
         # GPIO class only works Raspberry pi.
         # If this is not being ran on a pi, use a dummy module.
         if onPi:
-            self.pins = GPIO.GPIO()
-            self.pins.init()
+            if self.hasGpio:
+                self.pins = GPIO.GPIO()
+                self.pins.init()
             self.fc.init("/home/pi")
         else:
             self.pins = Dummy.Dummy()
@@ -55,13 +61,13 @@ class main:
         self.music.init()
 
         # Time keeping
-        self.nextCheck = 0
+#       self.nextCheck = 0
 
 
         # Main loop for the program
         while True:
             self.cycle()
-            #    time.sleep(0.0001)
+            time.sleep(0.001)
 
 
 # Start Program

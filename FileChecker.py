@@ -28,7 +28,7 @@ class FileChecker:
             return True
         return False
 
-    def checkVolumeDown(self):
+    def checkGetTime(self):
         if os.path.isfile(self.path + "/commands/getTime"):
             os.system("sudo rm " + self.path + "/commands/getTime");
             return True

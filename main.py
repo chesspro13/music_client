@@ -61,7 +61,7 @@ class main:
             self.fc.init("/home/chesspro13", self.music)
 
         ir = IRInterface()
-        ir.init(18)
+        ir.init(18, self.fc, self.music)
 
         # Main loop for the program
         while True:

@@ -1,5 +1,6 @@
 from owainm713_IR_scripts.IRModule import IRRemote
 import RPi.GPIO as GPIO
+import FileChecker
 import time
 
 
@@ -22,7 +23,7 @@ class IRInterface:
             print( 'Testing')
             return 'Testing'
         elif code == 0xFF02FD:
-            print('Volume Up')
+            self.music.volumeUp()
             return 'Volume Up'
         elif code == 0xFFC23D:
             print('Restart')
@@ -31,13 +32,13 @@ class IRInterface:
             print('Back')
             return 'Back'
         elif code == 0xFFA857:
-            print('Play')
+            self.music.toggle()
             return 'Play'
         elif code == 0xFF906F:
             print('Forward')
             return 'Forward'
         elif code == 0xFF9867:
-            print( 'Volume Down')
+            self.music.volumeDown()
             return 'Volume Down'
 
         #   else:
@@ -45,19 +46,23 @@ class IRInterface:
 
         return
 
-    def init(self, irPin):
-        ir = IRRemote(callback='DECODE')
+    def init(self, irPin, fc, music):
+        self.ir = IRRemote(callback='DECODE')
+        self.music = music
+
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)      # uses numbering outside circles
         GPIO.setup(irPin, GPIO.IN)   # set irPin to input
-        GPIO.add_event_detect(irPin, GPIO.BOTH, callback=ir.pWidth)
+        GPIO.add_event_detect(irPin, GPIO.BOTH, callback=self.ir.pWidth)
+
+        self.fc = fc
 
         try:
             time.sleep(5)
 
-            ir.set_verbose(False)
-            ir.set_repeat( False )
-            ir.set_callback(self.remote_callback)
+            self.ir.set_verbose(False)
+            self.ir.set_repeat( False )
+            self.ir.set_callback(self.remote_callback)
 
             # This is where you could do other stuff
             # Blink a light, turn a motor, run a webserver
@@ -68,5 +73,5 @@ class IRInterface:
 
         except:
             print('Removing callback and cleaning up GPIO')
-            ir.remove_callback()
+            self.ir.remove_callback()
             GPIO.cleanup(irPin)

@@ -17,7 +17,7 @@ class Music:
 
             # Amixer is not a viable option for running in a container since I cannot access the host system!
             # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...
-            # call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
+            call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
 
 
     def volumeDown(self):
@@ -26,7 +26,7 @@ class Music:
             
             # Amixer is not a viable option for running in a container since I cannot access the host system!
             # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...
-            # call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
+            call( ["amixer", "-D", "pulse", "sset", "Master",str(self.volume)+"%"] )
 
     def toggle(self):
 
@@ -66,4 +66,4 @@ class Music:
 
         # Amixer is not a viable option for running in a container since I cannot access the host system
         # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...
-        # call(["amixer", "-D", "pulse", "set", "Master", str(self.volume)+"%"])
+        call(["amixer", "-D", "pulse", "set", "Master", str(self.volume)+"%"])

@@ -1,6 +1,6 @@
 import os
-
 # System opperates off of files. If the website creates a file, the client sees that and performs opperations depending on if a file is there.
+
 
 class FileChecker:
 

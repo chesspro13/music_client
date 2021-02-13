@@ -66,7 +66,7 @@ ir = IRModule.IRRemote(callback='DECODE')
 # compatable remote you are using
 
 # set up GPIO options and set callback function required
-# by the IR remote module (ir.pWidth)        
+# by the IR remote module (ir.pWidth)
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)      # uses numbering outside circles
 GPIO.setup(irPin,GPIO.IN)   # set irPin to input
@@ -76,7 +76,7 @@ ir.set_verbose() # verbose option prints outs high and low width durations (ms)
 print('Starting IR remote sensing using DECODE function and verbose setting equal True ')
 print('Use ctrl-c to exit program')
 
-try:    
+try:
     time.sleep(5)
 
     # turn off verbose option and change callback function
@@ -89,7 +89,7 @@ try:
     # This is where you could do other stuff
     # Blink a light, turn a motor, run a webserver
     # count sheep or mine bitcoin
-    
+
     while True:
         time.sleep(1)
 

@@ -43,6 +43,8 @@ class main:
 
     def init(self, onPi):
         self.hasGpio = False
+        self.hasIR = True
+
         self.fc = FileChecker.FileChecker()
 
         # Controls music

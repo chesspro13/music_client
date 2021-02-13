@@ -1,3 +1,4 @@
+import IRInterface
 import FileChecker
 import Music
 import time
@@ -40,7 +41,6 @@ class main:
             print("THIS IS NOT RIGHT! NEED TO FIX!!!")
             self.pins.setOutput("FUCK! THIS IS WRONG")
 
-    #
     def init(self, onPi):
         self.hasGpio = False
         self.fc = FileChecker.FileChecker()
@@ -60,10 +60,8 @@ class main:
             self.pins = Dummy.Dummy()
             self.fc.init("/home/chesspro13", self.music)
 
-
-        # Time keeping
-#       self.nextCheck = 0
-
+        ir = IRInterface()
+        ir.init(18)
 
         # Main loop for the program
         while True:

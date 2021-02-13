@@ -23,6 +23,7 @@ class IRInterface:
             print( 'Testing')
             return 'Testing'
         elif code == 0xFF02FD:
+            print('Volume Up')
             self.music.volumeUp()
             return 'Volume Up'
         elif code == 0xFFC23D:
@@ -38,6 +39,7 @@ class IRInterface:
             print('Forward')
             return 'Forward'
         elif code == 0xFF9867:
+            print('Volume Down')
             self.music.volumeDown()
             return 'Volume Down'
 

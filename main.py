@@ -60,8 +60,9 @@ class main:
             self.pins = Dummy.Dummy()
             self.fc.init("/home/chesspro13", self.music)
 
-        ir = IRInterface.IRInterface()
-        ir.init(18, self.fc, self.music)
+        if self.hasIR:
+            self.ir = IRInterface.IRInterface()
+            self.ir.init(18, self.fc, self.music)
 
         # Main loop for the program
         while True:

@@ -14,6 +14,10 @@ class main:
         if self.hasGpio:
             self.pins.setOutput(self.music.getCurPlayTime(), 1)
 
+        self.checkForMusicControl()
+
+    def checkForMusicControl(self):
+
         # Check to see if there is a file named "Play"
         if self.fc.checkPlay():
             self.music.play()
@@ -33,6 +37,7 @@ class main:
         if self.fc.checkGetTime():
             self.fc.setTotalPlayTime(self.music.getTotalPlayTime())
 
+    # Not sure if this is depricated or not...
     # I think this is for updating the LCD screen?
     def timeLoop(self):
         t = time.time()
@@ -41,15 +46,19 @@ class main:
             print("THIS IS NOT RIGHT! NEED TO FIX!!!")
             self.pins.setOutput("FUCK! THIS IS WRONG")
 
-    def init(self, onPi):
+    def __init__(self):
+        piPath = "/songs"
+
         self.hasGpio = False
-        self.hasIR = True
+        self.hasIR = False
 
         self.fc = FileChecker.FileChecker()
 
         # Controls music
         self.music = Music.Music()
-        self.music.init()
+
+        # Determine if this is running on a pi
+        onPi = self.fc.checkOnPi()
 
         # GPIO class only works Raspberry pi.
         # If this is not being ran on a pi, use a dummy module.
@@ -57,14 +66,14 @@ class main:
             if self.hasGpio:
                 self.pins = GPIO.GPIO()
                 self.pins.init()
-            self.fc.init("/home/pi", self.music)
+            self.fc.init(piPath, self.music)
+            if self.hasIR:
+                self.ir = IRInterface.IRInterface()
+                self.ir.init(18, self.fc, self.music)
+            self.music.setPath(piPath)
         else:
             self.pins = Dummy.Dummy()
-            self.fc.init("/home/chesspro13", self.music)
-
-        if self.hasIR:
-            self.ir = IRInterface.IRInterface()
-            self.ir.init(18, self.fc, self.music)
+            self.music.setPath(laptopPath)
 
         # Main loop for the program
         while True:
@@ -74,5 +83,3 @@ class main:
 
 # Start Program
 p = main()
-# Boolean is used to determine if the script is being running on raspberry pi or now.
-p.init(True)

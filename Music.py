@@ -50,19 +50,25 @@ class Music:
     def getSongName(self):
         return self.songName
 
-    def init(self):
-        self.fc = FileChecker.FileChecker()
+    def changeSong(self, song):
+        self.songName = song
+        self.musicPlayer = vlc.MediaPlayer(self.path + "/songs/" + self.songName)
+        self.musicPlayer.play()
+        self.playing = True
 
-        # This one is for computers
-        self.musicPlayer = vlc.MediaPlayer("/home/pi/songs/low.mp3")
-        # This one is for containers
-        # self.musicPlayer = vlc.MediaPlayer("/songs/low.mp3")
-        self.songName = "Yay!"
+    def setPath(self, path):
+        self.path = path
+
+    def __init__(self):
+        self.fc = FileChecker.FileChecker()
         self.playing = False
 
+        # This one is for computers
+        # DEPRICATED! Keeping until safe to remove
+        #            self.musicPlayer = vlc.MediaPlayer("/home/pi/songs/low.mp3")
+        
+        self.changeSong(self.fc.getDefaultSong())
         self.volume = 100
-
-        self.musicPlayer.play()
 
         # Amixer is not a viable option for running in a container since I cannot access the host system
         # Need to determine if writing a standalone script for the pi to monitor volume change files is worth it...

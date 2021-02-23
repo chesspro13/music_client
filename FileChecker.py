@@ -17,7 +17,7 @@ class FileChecker:
         return False
 
     def checkVolumeUp(self):
-        if os.path.isfile(self.path + "/volumeUp"):
+        if os.path.isfile(self.path + "/commands/volumeUp"):
             os.system("sudo rm " + self.path + "/commands/volumeUp")
             return True
         return False
@@ -28,6 +28,7 @@ class FileChecker:
             return True
         return False
 
+    # Depracated?
     def checkGetTime(self):
         if os.path.isfile(self.path + "/commands/getTime"):
             os.system("sudo rm " + self.path + "/commands/getTime");
@@ -45,6 +46,37 @@ class FileChecker:
         s = f.write(str(totalPlayTime))
         f.close()
 
-    def init(self, path, music):
-        self.path = path
-        self.music = music
+    def getSongs(self):
+
+        if self.verbose:
+            print("Searching for songs...")
+        for root, dirs, files in os.walk(self.path + "/songs"):
+            for file in files:
+                if ".mp3" in file:
+                    self.songs.append(file) #os.path.join(root, file))
+        if self.verbose:
+            songCount = len(self.songs)
+            if songCount == 0:
+                print("No songs found.")
+            elif songCount == 1:
+                print("Found " + str(len(self.songs)) + " song.")
+            else:
+                print("Found " + str(len(self.songs)) + " songs.")
+
+    def getDefaultSong(self):
+        # TODO: Impliment!
+        print("getDefaultSong() not implimented! Using default value of low.mp3")
+        return "low.mp3"
+
+    def checkOnPi(self):
+        if os.path.isfile("/onPi"):
+            return True
+        else:
+            return False
+
+#    def init(self, path, music):
+    def __init__(self):
+        self.path = "/speaker"
+        # self.music = music
+
+        self.list_of_files = []

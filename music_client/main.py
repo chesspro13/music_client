@@ -1,4 +1,4 @@
-import IRInterface
+#import IRInterface
 import FileChecker
 import Music
 import time
@@ -68,6 +68,7 @@ class main:
                 self.pins.init()
             self.fc.init(piPath, self.music)
             if self.hasIR:
+                import IRInterface
                 self.ir = IRInterface.IRInterface()
                 self.ir.init(18, self.fc, self.music)
             self.music.setPath(piPath)

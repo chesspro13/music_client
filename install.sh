@@ -4,7 +4,6 @@ on_pi="Is this being ran on a Raspberry Pi?"
 
 function installDependancies {
   echo "Installing dependancies..."
-  echo "Are you running this on a Raspberry Pi?"
 
   sudo apt-get install python3-smbus -y
   sudo apt-get install python3-vlc -y
@@ -15,6 +14,9 @@ function installDependancies {
   sudo apt-get install python3-django -y
   sudo apt-get install vlc -y
 
+  echo ''
+  echo ''
+  echo "Are you running this on a Raspberry Pi?"
   while true; do
       read -p "[y/n]: " yn
       case $yn in
@@ -37,6 +39,8 @@ function setConfig {
 
 function startServer() {
   echo "Install finished."
+  echo ''
+  echo ''
   echo "Do you want to start the server now?"
   while true; do
       read -p "[y/n]: " yn
@@ -52,6 +56,8 @@ function startServer() {
 }
 
 function onStartup() {
+  echo ''
+  echo ''
   echo "Do you want this to run on startup?"
   while true; do
       read -p "[y/n]: " yn

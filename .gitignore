@@ -1,0 +1,2 @@
+onPi $ git rm --cached onPi rm onPi $ git commit -m Start ignoring onPi
+config/general_config.conf $ git rm --cached config/general_config.conf rm config/general_config.conf $ git commit -m Start ignoring general_config.conf

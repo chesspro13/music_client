@@ -1,95 +1,112 @@
 <!DOCTYPE html>
-
+<html>
 <style type="text/css">
 
-    .upper_buttons {
-        text-align: center;
-    }
+    /* These are for music control */
+        .upper_buttons {
+            text-align: center;
+        }
 
-    .lower_button {
-        text-align: center;
-    }
+        .lower_button {
+            text-align: center;
+        }
 
-    .buttonRight {
-        text-align: right;
-    }
+        .buttonRight {
+            text-align: right;
+        }
 
-    .buttonLeft {
-        text-align: left;
-    }
+        .buttonLeft {
+            text-align: left;
+        }
 
-    table {
-        margin-left: auto;
-        margin-right: auto;
-    }
+        .song_name {
+            text-align: center;
+            margin-top:300px;
+        }
 
-    .song_name {
-        text-align: center;
-        margin-top:300px;
-    }
+        .titleRow {
+            background-color: red;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
 
-    .titleRow {
-        background-color: red;
-        margin-left: auto;
-        margin-right: auto;
-        width: 75%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+    /* This is music list format */
 
-    .bill {
-        background-color: red;
-    }
+        .songTable {
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .songTable {
-        margin-left: auto;
-        margin-right: auto;
-    }
+        .songs {
+            width: 75%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
 
-    table {
-        border-collapse: collapse;
-        width: 75%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        tr:nth-child(odd) {
+                background-color: #C4D8E2;
+        }
 
-    .songs {
-        width: 75%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+        tr:nth-child(even) {
+                background-color: #778899;
+        }
 
-    tr:nth-child(odd) {
-            background-color: #C4D8E2;
-    }
+        .runTime {
+            background-color: black;
+            color: white;
+            text-align: right;
+            padding-right: 200px;
+        }
 
-    tr:nth-child(even) {
-            background-color: #778899;
-    }
+        tr:hover {
+            background-color: white;
+            cursor: pointer;
+        }
 
-    .title {
-        background-color: black;
-        color: white;
-    }
+    /* These use both */
 
-    .runTime {
-        background-color: black;
-        color: white;
-        text-align: right;
-        padding-right: 200px;
-    }
+        table {
+            border-collapse: collapse;
+            width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    tr:hover {
-        background-color: white;
-        cursor: pointer;
-    }
+    /* Other */
+
+
+        .title {
+            background-color: black;
+            color: white;
+        }
 
 </style>
 
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Home Wreker Music Interface</title>
 </head>
 <body>
+
+
+
+    <div id="music" class="action">
+      <h2>Music</h2>
+    </div>
+
+    <div id="alarm" class="action" style="display:none">
+      <h2>Alarm</h2>
+    </div>
+
+     <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button" onclick="setAction('music')">Music</button>
+      <button class="w3-bar-item w3-button" onclick="setAction('alarm')">Paris</button>
+    </div>
+
+
+
     <h1 class="song_name" id="song_name">Song Name</h1>
     <table border="1px">
         <tr class="controller" style="background-color: white">
@@ -166,92 +183,25 @@
 
             <!--
 
-            ===========================Replace this with found songs on hardware============================
+            ===========================This loads songs found on hte hardware============================
 
             -->
 
 
             <table class="songs" style="padding-top: none;">
-                <tr onclick="setSong('test_song001.mp3')">
-                    <td>test_song001</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song002.mp3')">
-                    <td>test_song002</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song003.mp3')">
-                    <td>test_song003</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song004.mp3')">
-                    <td>test_song004</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song005.mp3')">
-                    <td>test_song005</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song006.mp3')">
-                    <td>test_song006</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song007.mp3')">
-                    <td>test_song007</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song008.mp3')">
-                    <td>test_song008</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song009.mp3')">
-                    <td>test_song009</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song010.mp3')">
-                    <td>test_song010</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song011.mp3')">
-                    <td>test_song011</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song012.mp3')">
-                    <td>test_song012</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song013.mp3')">
-                    <td>test_song013</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song014.mp3')">
-                    <td>test_song014</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song015.mp3')">
-                    <td>test_song015</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song016.mp3')">
-                    <td>test_song016</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song017.mp3')">
-                    <td>test_song017</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song018.mp3')">
-                    <td>test_song018</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song019.mp3')">
-                    <td>test_song019</td>
-                    <td>00:05:00</td>
-                </tr>
-                <tr onclick="setSong('test_song20.mp3')">
-                    <td>test_song0020</td>
-                    <td>00:05:00</td>
-                </tr>
+                <!--
+                    This is the format for the songs on the table
+                        <tr onclick="setSong('test_song001.mp3')">
+                            <td>test_song001</td>
+                            <td>00:05:00</td>
+                        </tr>
+                -->
+                {% for i in songs %}
+                    <tr onclick="setSong('{{i}}')">
+                        <td>{{i}}</td>
+                        <td>00:05:00</td>
+                    </tr>
+                {% endfor %}
             </table>
 
          </div>
@@ -265,11 +215,25 @@
 		var playTime = 0;
 		var playing = true;
 
+		// Tab switching vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+        function setAction(actionName) {
+          var i;
+          var x = document.getElementsByClassName("action");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+          document.getElementById(actionName).style.display = "block";
+        }
+
+        // Utility functions vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+        // Sets the currently playing song as the title and plays song
         function setSong( song ){
             document.getElementById('song_name').innerHTML = song;
             playSong( song );
         }
 
+        // No uses. Depricated??
 		function tellMeCurTime(){
 			let xhr = new XMLHttpRequest();
 			let c = 0;
@@ -284,9 +248,79 @@
 			return playTime;
 		}
 
-		function testing( tim ){
-			this.k = tim;
+		function getTime() {
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET', 'curPos');
+			xhr.responseType = 'text';
+
+			xhr.onload = function() {
+//				alert(xhr.responseText);
+
+				if( (xhr.responseText === "") == false)
+				{
+					if( keepLooping)
+					{
+						k = parseInt(xhr.responseText)//document.getElementById('curTime').innerHTML = msToTime(xhr.responseText);
+						keepLooping = false;
+					}
+				}
+
+			};
+			if (keepLooping)
+			xhr.send();
+//			return k;
+//			setInterval( getTime, 1000 );
 		}
+		function msToTime( tim ) {
+			let k = playTime;
+			let hours = Math.floor((playTime/1000)/3600);
+			let minutes = Math.floor(((playTime/1000)/60)- (hours*60));
+			let seconds = Math.floor(((playTime/1000)-(hours*60)+(minutes*60))%60);
+			console.log("K:" + String(k));
+			output = "";
+			if( hours < 10)
+				output += "0" + hours.toString();
+			else
+				output += hours.toString();
+
+			if( minutes < 10)
+				output += ":0" + minutes.toString();
+			else
+				output += ":" + minutes.toString();
+
+			if( seconds < 10)
+				output += ":0" + seconds.toString();
+			else
+				output += ":" + seconds.toString();
+
+//			console.log("Pretty: " + output);
+//			console.log("Ugly: " + String(hours) + ":" + String(minutes) + ":" + String(seconds));
+			return output;
+		}
+
+		function setTime(tim) {
+				let t = msToTime( tim );
+				document.getElementById('curTime').innerHTML = t;
+		}
+
+	    // No use? Depericated?
+		function getTotal(){
+		    try{
+                var length = 67;
+                var total = (playTime/{{ mills }});
+                output = "";
+                for( i = 0; i < length * total; i++)
+                    output += "=";
+                for( i = 0; i < length - output.length; i++)
+                    output += " ";
+                document.getElementById('percent').innerHTML = output;
+			}catch (error){
+			    document.getElementById('percent').innerHTML = "00:00:00";
+			}
+		}
+
+
+        // Music player commands VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
 		function rewind() {
 			let xhr = new XMLHttpRequest();
@@ -344,75 +378,7 @@
 			playing = false;
 		}
 
-		function getTime() {
-			let xhr = new XMLHttpRequest();
-			xhr.open('GET', 'curPos');
-			xhr.responseType = 'text';
-
-			xhr.onload = function() {
-//				alert(xhr.responseText);
-
-				if( (xhr.responseText === "") == false)
-				{
-					if( keepLooping)
-					{
-						k = parseInt(xhr.responseText)//document.getElementById('curTime').innerHTML = msToTime(xhr.responseText);
-						keepLooping = false;
-					}
-				}
-
-			};
-			if (keepLooping)
-			xhr.send();
-//			return k;
-//			setInterval( getTime, 1000 );
-		}
-		function msToTime( tim ) {
-			let k = playTime;
-			let hours = Math.floor((playTime/1000)/3600);
-			let minutes = Math.floor(((playTime/1000)/60)- (hours*60));
-			let seconds = Math.floor(((playTime/1000)-(hours*60)+(minutes*60))%60);
-			console.log("K:" + String(k));
-			output = "";
-			if( hours < 10)
-				output += "0" + hours.toString();
-			else
-				output += hours.toString();
-
-			if( minutes < 10)
-				output += ":0" + minutes.toString();
-			else
-				output += ":" + minutes.toString();
-
-			if( seconds < 10)
-				output += ":0" + seconds.toString();
-			else
-				output += ":" + seconds.toString();
-
-//			console.log("Pretty: " + output);
-//			console.log("Ugly: " + String(hours) + ":" + String(minutes) + ":" + String(seconds));
-			return output;
-		}
-
-		function setTime(tim) {
-				let t = msToTime( tim );
-				document.getElementById('curTime').innerHTML = t;
-		}
-	
-		function getTotal(){
-		    try{
-                var length = 67;
-                var total = (playTime/{{ mills }});
-                output = "";
-                for( i = 0; i < length * total; i++)
-                    output += "=";
-                for( i = 0; i < length - output.length; i++)
-                    output += " ";
-                document.getElementById('percent').innerHTML = output;
-			}catch (error){
-			    document.getElementById('percent').innerHTML = "00:00:00";
-			}
-		}
+        // Main loop vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 		function doStuff() {
 			setTime(tellMeCurTime());

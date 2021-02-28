@@ -5,6 +5,7 @@ on_pi="Is this being ran on a Raspberry Pi?"
 function installDependancies {
   echo "Installing dependancies..."
 
+  # Python dependancies
   sudo apt-get install python3-smbus -y
   sudo apt-get install python3-vlc -y
   sudo apt-get install python3-bs4 -y
@@ -12,7 +13,11 @@ function installDependancies {
   sudo apt-get install python3-requests -y
   sudo apt-get install python3-pafy -y
   sudo apt-get install python3-django -y
+
+  # Software dependencies
   sudo apt-get install vlc -y
+  sudo apt-get install docker -y
+  sudo apt-get install docker-compose -y
 
   echo ''
   echo ''

@@ -13,13 +13,18 @@ lastTime = 0
 
 
 def home_page(request, *args, **kwargs):
+    return redirect('music')
+
+def music(request, *args, **kwargs):
+
     tab = request.POST.get("ctrl")
 
     print("Mils: " + str(getLengthMills()))
 
     context = {
         'length': getLength(),
-        'mills': getLengthMills()
+        'mills': getLengthMills(),
+        'songs': getSongs(),
     }
 
     try:
@@ -45,6 +50,10 @@ def home_page(request, *args, **kwargs):
 
     return render(request, "index.html", context)
 
+
+def alarms(request, *args, **kwargs):
+    print("Alarms page hasn't been created yet!")
+    return redirect(music(*args,**kwargs))
 
 def base_page(request, *args, **kwargs):
     return render(request, "base.html", {})
@@ -96,6 +105,7 @@ def playSong(request, *args, **kwargs):
     print( '\n\n\nGonna play ' + d['song'] + "\n\n\n")
 
     return HttpResponse("Done")
+
 
 def getCurTime(request, *args, **kwargs):
     os.system("touch /speaker/commands/getTime")
@@ -167,3 +177,23 @@ def downloadAudio(request, *args, **kwargs):
 def checkInit():
     if os.path.isfile("/speaker/commands/init") != False:
         print("There is a user connecting for the first time")
+
+
+def getConfig(lookingFor):
+    f = open("../config/general_config.conf", "r")
+    d = f.read()
+    if lookingFor in d:
+        return d.split("__")[1]
+
+
+def getSongs():
+    songs = []
+
+    path = getConfig("working_directory")
+
+    for root, dirs, files in os.walk(path + "/songs"):
+        for file in files:
+            if ".mp3" in file:
+                songs.append(file)
+
+    return songs
